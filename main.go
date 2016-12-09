@@ -7,5 +7,6 @@ import (
 
 func main() {
 	t := octree.Alloc()
+	t.Divide()
 	fmt.Printf("%s\n", t)
 }
