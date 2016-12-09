@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/deadsy/voxpop/octree"
 )
 
 func main() {
-	fmt.Printf("here\n")
+	t := octree.Alloc()
+	fmt.Printf("%s\n", t)
 }

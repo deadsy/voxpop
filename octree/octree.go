@@ -4,15 +4,32 @@ package octree
 
 //-----------------------------------------------------------------------------
 
-const (
-	OCTREE_TYPE_PARENT = iota // child nodes are present
-	OCTREE_TYPE_SPACE         // empty space
-	OCTREE_TYPE_SOLID         // solid
-)
+type Properties struct {
+	Type int // node type
+}
 
-type Octree struct {
-	vtype int        // octree type
-	child [8]*Octree // octree children
+type Node struct {
+	Props *Properties // node properties
+	Empty bool        // true if the node is empty (no children)
+	Child [8]*Node    // child node pointers
+}
+
+//-----------------------------------------------------------------------------
+
+func (n *Node) String() string {
+	if n.Empty {
+		return "node has 0 children"
+	}
+	return "node has children"
+}
+
+//-----------------------------------------------------------------------------
+
+// Return a root level octree
+func Alloc() *Node {
+	var n Node
+	n.Empty = true
+	return &n
 }
 
 //-----------------------------------------------------------------------------
